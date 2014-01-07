@@ -1,0 +1,5 @@
+*.bak
+eggs/
+develop-eggs/
+parts/
+bin/

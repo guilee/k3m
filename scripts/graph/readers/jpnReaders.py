@@ -48,6 +48,8 @@ def jpwn_reader(filePath, outputPath=None):
 
 def jp_fr_dict_gen(wolfPath, wnjpPath, output=None):
     """ Remplacer les deux sources en paramètre par des objets de type reader
+        #TODO: Introduire itertools.groupby(data, keyfunc) qui permettra de
+        remplacer uniq
     """
     if not(output):
         output = os.path.join(os.path.split(wolfPath)[0], 'wolf-jpwn.dict')

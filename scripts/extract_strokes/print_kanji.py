@@ -17,18 +17,19 @@ def retrieveHanjaFromRessources(charListFile, resourcePath, outputPath):
     if not(os.path.exists(outputPath)):
         os.makedirs(outputPath)
 
+
     not_found = open(os.path.join(outputPath, 'not_found.txt'), 'w')    
 
     with codecs.open(charListFile, 'r', 'utf-8') as f_d:
         for i, char in enumerate(f_d.readlines()):
-            print type(char)
-            filename = retrieveFileFromChar(char[0])
+            filename = retrieveFileFromChar(char[0]).encode('utf-8')
             src = os.path.join(resourcePath, filename)
-            dst = os.path.join(outputPath, '%s-%s' % (i+1, filename))
+            dst = os.path.join(outputPath, '%s-%s.svg' % (i+1, char[0].encode('utf-8')))
             try:
                 shutil.copy(src, dst)
             except IOError as err:
-                not_found.write(char.encode('utf-8'))
+                not_found.write('%s' %char.encode('utf-8'))
+#                    type(char)))
 
 
 
